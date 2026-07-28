@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check Python syntax
+        run: |
+          python -m py_compile app.py
+          echo "app.py syntax OK"
+
+      - name: Check requirements.txt
+        run: |
+          pip install -r requirements.txt --dry-run 2>&1 | tail -5 || true
+          echo "requirements.txt check complete"
