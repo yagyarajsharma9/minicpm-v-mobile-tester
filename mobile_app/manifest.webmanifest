@@ -1,0 +1,17 @@
+{
+  "name": "MiniCPM Mobile",
+  "short_name": "MiniCPM",
+  "start_url": "/mobile",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f4f7f5",
+  "theme_color": "#0b6f64",
+  "icons": [
+    {
+      "src": "/mobile_app/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

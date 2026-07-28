@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MiniCPM-V 4.6 Mobile Tester</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-label="Chat workspace">
+        <header class="topbar">
+          <div>
+            <h1>MiniCPM-V 4.6</h1>
+            <p id="statusLine">Checking model status...</p>
+          </div>
+          <button id="clearBtn" type="button" title="Clear conversation">Clear</button>
+        </header>
+
+        <div id="chatLog" class="chat-log" aria-live="polite"></div>
+
+        <form id="chatForm" class="composer">
+          <div id="previewStrip" class="preview-strip" aria-label="Attached media"></div>
+          <textarea id="prompt" rows="4" placeholder="Ask about text, images, OCR, screenshots, or a sampled video..."></textarea>
+          <div class="composer-actions">
+            <label class="file-btn" title="Attach images">
+              Images
+              <input id="imageInput" type="file" accept="image/*" multiple />
+            </label>
+            <label class="file-btn" title="Attach a video">
+              Video
+              <input id="videoInput" type="file" accept="video/*" />
+            </label>
+            <button id="sendBtn" type="submit">Send</button>
+          </div>
+        </form>
+      </section>
+
+      <aside class="control-panel" aria-label="Model controls">
+        <section>
+          <h2>Runtime</h2>
+          <label>
+            Provider
+            <select id="provider">
+              <option value="transformers" selected>Transformers local</option>
+              <option value="ollama">Ollama local</option>
+              <option value="openai">OpenAI-compatible</option>
+            </select>
+          </label>
+          <label>
+            Endpoint
+            <input id="endpoint" value="http://localhost:11434" />
+          </label>
+          <label>
+            Model
+            <input id="model" value="openbmb/MiniCPM-V-4.6" />
+          </label>
+        </section>
+
+        <section>
+          <h2>Modes</h2>
+          <div class="quick-grid">
+            <button type="button" data-preset="describe">Describe</button>
+            <button type="button" data-preset="ocr">OCR</button>
+            <button type="button" data-preset="compare">Compare</button>
+            <button type="button" data-preset="video">Timeline</button>
+          </div>
+          <label class="toggle-row">
+            <input id="toolDemo" type="checkbox" />
+            Tool calling
+          </label>
+        </section>
+
+        <section>
+          <h2>Vision</h2>
+          <label>
+            Compression
+            <select id="downsample">
+              <option value="16x">16x faster</option>
+              <option value="4x">4x finer detail</option>
+            </select>
+          </label>
+          <label>
+            Max image slices
+            <input id="maxSliceNums" type="number" min="1" max="64" value="36" />
+          </label>
+          <label>
+            Video frames
+            <input id="maxNumFrames" type="number" min="1" max="128" value="16" />
+          </label>
+          <label>
+            Stack frames
+            <input id="stackFrames" type="number" min="1" max="5" value="1" />
+          </label>
+          <label class="toggle-row">
+            <input id="useImageId" type="checkbox" checked />
+            Image ids
+          </label>
+        </section>
+
+        <section>
+          <h2>Generation</h2>
+          <label>
+            Temperature <output id="temperatureOut">0.2</output>
+            <input id="temperature" type="range" min="0" max="1.5" step="0.05" value="0.2" />
+          </label>
+          <label>
+            Top-p <output id="topPOut">0.9</output>
+            <input id="topP" type="range" min="0.1" max="1" step="0.05" value="0.9" />
+          </label>
+          <label>
+            Top-k
+            <input id="topK" type="number" min="1" max="200" value="40" />
+          </label>
+          <label>
+            Max tokens
+            <input id="maxTokens" type="number" min="32" max="4096" value="512" />
+          </label>
+        </section>
+
+        <section>
+          <h2>System</h2>
+          <textarea id="systemPrompt" rows="5">You are MiniCPM-V 4.6 running in a local mobile capability tester. Answer concisely and call tools when useful.</textarea>
+        </section>
+      </aside>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
