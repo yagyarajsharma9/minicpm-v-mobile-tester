@@ -163,37 +163,40 @@ What happens automatically:
 
 ## Project Structure
 
-`
+```text
 minicpm-v-mobile-tester/
-├── README.md                      # This file
-├── AGENTS.md                      # Agent instructions
-├── LICENSE                        # MIT License
-├── CONTRIBUTING.md                # How to contribute
-├── SECURITY.md                    # Security policy
-├── CODE_OF_CONDUCT.md             # Code of conduct
-├── app.py                         # FastAPI web server (single file, 450+ lines)
-├── requirements.txt               # Python dependencies
-├── .gitignore                     # Excludes APK, vendor, .venv, logs
-├── run.ps1                        # Start web server
-├── run_controller.py              # Desktop vibration controller
-├── run_controller.ps1             # Controller helper script
-├── build_android.ps1              # Android build script
-├── test_response_quality.ps1     # Android quality self-test
-├── test_memory_compaction.ps1    # Android memory self-test
-├── mobile_app/                    # PWA mobile shell
-│   ├── index.html, app.js, styles.css, manifest.webmanifest, sw.js, icon.svg
-├── static/                        # Web UI assets
-│   ├── index.html, app.js, styles.css
-└── docs/                          # Research documentation
-    ├── architecture.md
-    ├── android-development.md
-    ├── research-findings.md
-    └── api-reference.md
-`
-
----
-
-## API Reference
+  README.md
+  AGENTS.md
+  LICENSE
+  CONTRIBUTING.md
+  SECURITY.md
+  CODE_OF_CONDUCT.md
+  app.py
+  requirements.txt
+  .gitignore
+  run.ps1
+  run_controller.py
+  run_controller.ps1
+  build_android.ps1
+  test_response_quality.ps1
+  test_memory_compaction.ps1
+  mobile_app/
+    index.html
+    app.js
+    styles.css
+    manifest.webmanifest
+    sw.js
+    icon.svg
+  static/
+    index.html
+    app.js
+    styles.css
+  docs/
+    architecture.md
+    android-development.md
+    research-findings.md
+    api-reference.md
+```## API Reference
 
 ### POST /api/chat
 Main chat endpoint with text prompts, image/video attachments, and generation options.
